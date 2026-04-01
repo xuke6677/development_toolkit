@@ -1,4 +1,4 @@
-/* JSON格式化工具 - 样式文件 */
+/* 开发工具箱 - 样式文件 */
 
 * {
   margin: 0;
@@ -21,6 +21,32 @@ body {
   height: 100vh;
   background-color: #f5f5f5;
 }
+
+/* 选项卡导航 */
+.tab-nav {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  background: #1e1e1e;
+  padding: 0 10px;
+  gap: 0;
+  flex-shrink: 0;
+}
+.tab-item {
+  padding: 8px 24px;
+  color: #aaa;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.tab-item:hover { color: #fff; }
+.tab-item.active { color: #4facfe; border-bottom-color: #4facfe; }
+
+/* 选项卡页面 */
+.tab-page { display: none; flex-direction: column; flex: 1; overflow: hidden; }
+.tab-page.active { display: flex; }
 
 /* 顶部工具栏 */
 .top-toolbar {
@@ -377,3 +403,99 @@ mark.sh { background-color: #FFEB3B; border-radius: 2px; padding: 0 1px; }
   z-index: 10000;
   pointer-events: none;
 }
+
+/* ====================
+   工具页面通用样式
+   ==================== */
+.tool-page { padding: 24px 30px; overflow-y: auto; flex: 1; background: #1a1a2e; color: #e0e0e0; }
+.tool-page h3 { color: #4facfe; margin-bottom: 12px; font-size: 18px; }
+.tool-page h4 { color: #4facfe; margin: 20px 0 10px; font-size: 15px; }
+.tool-input { padding: 8px 12px; border: 1px solid #444; border-radius: 4px; background: #2a2a3e; color: #e0e0e0; font-size: 13px; outline: none; }
+.tool-input:focus { border-color: #4facfe; }
+.tool-input.wide { flex: 1; }
+.tool-select { padding: 8px 8px; border: 1px solid #444; border-radius: 4px; background: #2a2a3e; color: #e0e0e0; font-size: 13px; outline: none; }
+.tool-textarea { width: 100%; min-height: 300px; padding: 12px; border: 1px solid #444; border-radius: 6px; background: #2a2a3e; color: #e0e0e0; font-size: 14px; font-family: inherit; resize: vertical; outline: none; }
+.tool-textarea:focus { border-color: #4facfe; }
+.tool-textarea.small { min-height: 120px; }
+.tool-btn.green { background: #52c41a; color: #fff; border: none; padding: 6px 16px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+.tool-btn.green:hover { background: #73d13d; }
+.tool-btn.red { background: #f5222d; color: #fff; border: none; padding: 6px 16px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+.tool-btn.red:hover { background: #ff4d4f; }
+
+/* 时间戳转换 */
+.ts-current { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
+.ts-value { font-size: 32px; font-weight: bold; color: #fff; font-family: Consolas, monospace; }
+.ts-unit { color: #aaa; font-size: 14px; }
+.ts-switch { color: #4facfe; font-size: 13px; cursor: pointer; text-decoration: none; }
+.ts-datetime { color: #aaa; font-size: 13px; margin-bottom: 16px; }
+.ts-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.ts-row .tool-input { width: 180px; }
+
+/* 翻译工具 */
+.tr-page { display: flex; flex-direction: column; }
+.tr-lang-tabs { display: flex; gap: 16px; margin-bottom: 12px; align-items: center; flex-shrink: 0; }
+.tr-lang { color: #aaa; cursor: pointer; font-size: 15px; }
+.tr-lang.active { color: #4facfe; }
+.tr-content { display: flex; gap: 20px; flex: 1; min-height: 0; }
+.tr-left { flex: 1; display: flex; flex-direction: column; }
+.tr-right { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.tr-result-block { flex: 1; display: flex; flex-direction: column; }
+.tr-result-block label { color: #aaa; font-size: 13px; display: block; margin-bottom: 4px; flex-shrink: 0; }
+.tr-left .tool-textarea, .tr-result-block .tool-textarea { flex: 1; min-height: 0; resize: none; }
+
+/* SQL拼接工具 */
+.sql-toolbar { display: flex; gap: 8px; margin-bottom: 12px; flex-shrink: 0; }
+.sql-content { display: flex; gap: 20px; flex: 1; min-height: 0; }
+.sql-left { flex: 1; display: flex; flex-direction: column; }
+.sql-left .tool-textarea { flex: 1; min-height: 0; resize: none; }
+.sql-right { flex: 1; display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+.sql-result-row { display: flex; align-items: center; gap: 8px; }
+
+/* SQL页面撑满 */
+#tab-sql .tool-page { display: flex; flex-direction: column; }
+
+/* Cron生成器 */
+.cron-field-tabs { display: flex; gap: 0; margin-bottom: 16px; }
+.cron-ftab { padding: 8px 20px; background: #333; color: #aaa; cursor: pointer; font-size: 13px; border: 1px solid #444; }
+.cron-ftab:first-child { border-radius: 4px 0 0 4px; }
+.cron-ftab:last-child { border-radius: 0 4px 4px 0; }
+.cron-ftab.active { background: #4facfe; color: #fff; border-color: #4facfe; }
+.cron-options { background: #2a2a3e; border: 1px solid #444; border-radius: 6px; padding: 16px; margin-bottom: 16px; }
+.cron-options .cron-opt-row { display: flex; align-items: center; gap: 6px; margin: 6px 0; color: #ccc; font-size: 13px; }
+.cron-options .cron-opt-row label { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+.cron-options .cron-opt-row input[type="number"] { width: 70px; }
+.cron-options .cron-opt-row select { min-width: 70px; }
+.cron-options .cron-opt-row code { background: #1a1a2e; padding: 1px 6px; border-radius: 3px; color: #4facfe; font-size: 12px; }
+.cron-options .cron-spec-grid { margin: 6px 0 0 24px; }
+.cron-options .cron-spec-grid label { display: inline-flex; align-items: center; gap: 2px; margin: 2px 8px 2px 0; font-size: 13px; color: #ccc; cursor: pointer; }
+.cron-options .cron-spec-grid .spec-group-label { color: #999; font-size: 12px; margin-right: 4px; }
+.cron-num { width: 70px; padding: 4px 8px; border: 1px solid #444; border-radius: 3px; background: #1a1a2e; color: #e0e0e0; font-size: 13px; text-align: center; }
+
+.cron-fields-display { margin-bottom: 16px; }
+.cron-fields-display > span { color: #aaa; font-size: 13px; display: block; margin-bottom: 8px; }
+.cron-fields { display: flex; gap: 4px; }
+.cron-field-box { text-align: center; min-width: 70px; }
+.cron-field-label { background: #4facfe; color: #fff; padding: 6px 12px; border-radius: 4px 4px 0 0; font-size: 12px; font-weight: bold; }
+.cron-field-val { background: #fff; color: #333; padding: 8px 12px; border-radius: 0 0 4px 4px; font-size: 14px; font-family: Consolas, monospace; min-height: 36px; }
+.cron-expr-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; color: #ccc; font-size: 14px; }
+.cron-expr-row .tool-input { flex: 1; font-family: Consolas, monospace; font-size: 15px; }
+.cron-next-title { color: #4facfe; font-size: 14px; margin-bottom: 8px; }
+.cron-next-runs { background: #2a2a3e; border-radius: 6px; padding: 12px 16px; font-family: Consolas, monospace; font-size: 13px; color: #ccc; line-height: 1.8; white-space: pre-wrap; margin-bottom: 16px; }
+
+/* Cron功能介绍 */
+.cron-intro-title { color: #4facfe; font-size: 14px; margin-bottom: 8px; }
+.cron-intro { background: #2a2a3e; border-radius: 6px; padding: 16px 20px; font-size: 13px; color: #ccc; line-height: 1.8; }
+.cron-intro p { margin: 8px 0; }
+.cron-intro ul { margin: 8px 0 8px 20px; }
+.cron-intro li { margin: 3px 0; }
+.cron-intro code { background: #1a1a2e; padding: 2px 8px; border-radius: 3px; font-family: Consolas, monospace; color: #4facfe; }
+.cron-help-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.cron-help-table th, .cron-help-table td { border: 1px solid #444; padding: 6px 12px; text-align: left; font-size: 12px; }
+.cron-help-table th { background: #333; color: #4facfe; }
+
+/* 文本处理 */
+.txt-page { display: flex; flex-direction: column; gap: 12px; }
+.txt-top, .txt-bottom { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.txt-top .tool-textarea, .txt-bottom .tool-textarea { flex: 1; min-height: 0; resize: none; font-family: Consolas, Monaco, monospace; }
+.txt-actions { display: flex; gap: 8px; flex-wrap: wrap; flex-shrink: 0; padding: 4px 0; }
+.txt-count { font-size: 12px; color: #888; margin-bottom: 4px; flex-shrink: 0; }

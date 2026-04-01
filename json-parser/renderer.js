@@ -1,4 +1,4 @@
-// JSON格式化工具 - 渲染进程脚本（虚拟滚动版）
+// 开发工具箱 - 渲染进程脚本（虚拟滚动版）
 // DOM元素
 const jsonInput = document.getElementById('json-input');
 const jsonOutput = document.getElementById('json-output');

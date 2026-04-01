@@ -16,7 +16,7 @@
   },
   "build": {
     "appId": "com.jsonparser.desktop",
-    "productName": "JSON格式化工具",
+    "productName": "开发工具箱",
     "directories": {
       "output": "dist4_backup"
     },
@@ -34,13 +34,14 @@
       "allowToChangeInstallationDirectory": true,
       "installerIcon": null,
       "createDesktopShortcut": true,
-      "shortcutName": "JSON格式化工具"
+      "shortcutName": "开发工具箱"
     },
     "files": [
       "main.js",
       "index.html",
       "renderer.js",
-      "styles.css"
+      "styles.css",
+      "tools.js"
     ]
   }
 }
