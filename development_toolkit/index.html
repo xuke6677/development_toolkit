@@ -93,23 +93,50 @@
         </div>
         <div class="ts-datetime">当前时间：<span id="ts-current-datetime"></span></div>
 
-        <h4>时间戳转日期时间</h4>
+        <h4>时间戳转日期时间（北京时间）</h4>
         <div class="ts-row">
+          <select id="ts-quick-ts" class="tool-select"><option value="">请选择</option><option value="date">当前日期</option><option value="datetime">当前时间</option></select>
           <input type="text" id="ts-input" class="tool-input" placeholder="输入时间戳">
           <select id="ts-input-unit" class="tool-select"><option value="ms">毫秒(ms)</option><option value="s">秒(s)</option></select>
           <input type="text" id="ts-date-result" class="tool-input" placeholder="结果" readonly>
-          <select id="ts-tz1" class="tool-select"><option>Asia/Shanghai</option><option>UTC</option><option>America/New_York</option><option>Europe/London</option></select>
           <button class="tool-btn primary" id="ts-copy-date">复制</button>
         </div>
 
-        <h4>日期时间转时间戳</h4>
+        <h4>日期时间转时间戳（北京时间）</h4>
         <div class="ts-row">
+          <select id="ts-quick-date" class="tool-select"><option value="">请选择</option><option value="date">当前日期</option><option value="datetime">当前时间</option></select>
           <input type="text" id="ts-date-input" class="tool-input" placeholder="yyyy-MM-dd HH:mm:ss">
           <select id="ts-output-unit" class="tool-select"><option value="ms">毫秒(ms)</option><option value="s">秒(s)</option></select>
           <input type="text" id="ts-stamp-result" class="tool-input" placeholder="结果" readonly>
-          <select id="ts-tz2" class="tool-select"><option>Asia/Shanghai</option><option>UTC</option><option>America/New_York</option><option>Europe/London</option></select>
           <button class="tool-btn primary" id="ts-copy-stamp">复制</button>
         </div>
+
+        <!-- 时间戳说明 -->
+        <div class="ts-info-section">
+          <div class="ts-info-card">
+            <div class="ts-info-title">&#x1F4D6; 简介</div>
+            <div class="ts-info-body">
+              <p>时间戳，是从 <strong>1970年1月1日</strong>（UTC/GMT的午夜）开始所经过的秒数（不考虑闰秒），用于表示一个时间点。然而，这种格式对于人类阅读并不友好，因此需要转换成可读的日期和时间格式。</p>
+              <p>这个工具能够将时间戳快速转换为人类可读的日期时间格式，同时也支持反向转换，即将日期时间转换为时间戳。</p>
+            </div>
+          </div>
+          <div class="ts-info-card">
+            <div class="ts-info-title">&#x1F570; 北京时间夏令时</div>
+            <div class="ts-info-body">
+              <p>1986年至1991年，中华人民共和国在全国范围实行了六年夏令时，每年从4月中旬的第一个星期日2时整（北京时间）到9月中旬第一个星期日的凌晨2时整（北京夏令时）。除1986年因是实行夏令时的第一年，从5月4日开始到9月14日结束外，其它年份均按规定的时段施行。</p>
+              <p>夏令时实施期间，将时间向后调快一小时。<strong>1992年4月5日后不再实行。</strong></p>
+            </div>
+          </div>
+          <div class="ts-info-card">
+            <div class="ts-info-title">&#x2615; JDK 的夏令时问题</div>
+            <div class="ts-info-body">
+              <p>夏令时的起止，是政令对日历描述的人为干预。每年均可能发生变化，JDK 如何感知这个规律并在系统上加以体现的？</p>
+              <p>穷举所有变化，并配置在 JDK 中。详见：<em>Timezone Data Versions in the JRE Software</em></p>
+              <p>不同版本下 <code>Asia/Shanghai</code> 时区夏令时起始时间不同，早期维护者认为中国标准时间的夏令时切换发生在0时，而后来又经证明发生在2时，新版本 JDK 及时修正了这个问题。</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 

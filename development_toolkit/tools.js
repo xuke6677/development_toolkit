@@ -46,6 +46,7 @@ document.getElementById('ts-stop').addEventListener('click', () => {
 
 document.getElementById('ts-copy-current').addEventListener('click', () => {
   navigator.clipboard.writeText(document.getElementById('ts-current-value').textContent);
+  showToast('复制成功');
 });
 
 
@@ -63,6 +64,19 @@ document.getElementById('ts-input').addEventListener('input', autoConvertTsToDat
 document.getElementById('ts-input').addEventListener('paste', () => setTimeout(autoConvertTsToDate, 0));
 document.getElementById('ts-input-unit').addEventListener('change', autoConvertTsToDate);
 
+// 快捷选择：时间戳转日期时间 - 下拉填充当前时间戳
+document.getElementById('ts-quick-ts').addEventListener('change', function() {
+  const now = new Date(), pad = n => String(n).padStart(2, '0');
+  const unit = document.getElementById('ts-input-unit').value;
+  if (this.value === 'date') {
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    document.getElementById('ts-input').value = unit === 's' ? Math.floor(d.getTime() / 1000) : d.getTime();
+  } else if (this.value === 'datetime') {
+    document.getElementById('ts-input').value = unit === 's' ? Math.floor(now.getTime() / 1000) : now.getTime();
+  } else { document.getElementById('ts-input').value = ''; document.getElementById('ts-date-result').value = ''; return; }
+  autoConvertTsToDate();
+});
+
 // 日期转时间戳 - 粘贴/输入自动转换
 function autoConvertDateToTs() {
   const str = document.getElementById('ts-date-input').value.trim();
@@ -76,8 +90,19 @@ document.getElementById('ts-date-input').addEventListener('input', autoConvertDa
 document.getElementById('ts-date-input').addEventListener('paste', () => setTimeout(autoConvertDateToTs, 0));
 document.getElementById('ts-output-unit').addEventListener('change', autoConvertDateToTs);
 
-document.getElementById('ts-copy-date').addEventListener('click', () => navigator.clipboard.writeText(document.getElementById('ts-date-result').value));
-document.getElementById('ts-copy-stamp').addEventListener('click', () => navigator.clipboard.writeText(document.getElementById('ts-stamp-result').value));
+// 快捷选择：日期时间转时间戳 - 下拉填充当前日期/时间
+document.getElementById('ts-quick-date').addEventListener('change', function() {
+  const now = new Date(), pad = n => String(n).padStart(2, '0');
+  if (this.value === 'date') {
+    document.getElementById('ts-date-input').value = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+  } else if (this.value === 'datetime') {
+    document.getElementById('ts-date-input').value = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  } else { document.getElementById('ts-date-input').value = ''; document.getElementById('ts-stamp-result').value = ''; return; }
+  autoConvertDateToTs();
+});
+
+document.getElementById('ts-copy-date').addEventListener('click', () => { navigator.clipboard.writeText(document.getElementById('ts-date-result').value); showToast('复制成功'); });
+document.getElementById('ts-copy-stamp').addEventListener('click', () => { navigator.clipboard.writeText(document.getElementById('ts-stamp-result').value); showToast('复制成功'); });
 
 startTimestamp();
 
